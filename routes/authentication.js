@@ -8,7 +8,14 @@ const passport = require('passport');
 // Require our custom strategies
 require('../services/passport');
 
-const signinStrategy = passport.authenticate('signinStrategy', { session: false });
+// Setup our sign-in strategy. We disable sessions because we are requiring
+// credentials to be supplied with each request to our API server.
+const signinStrategy = passport.authenticate('signinStrategy',
+  { session: false,
+    successRedirect: '/',
+    failureRedirect: '/signin',
+    failureFlash: true
+});
 
 // Helper method to create a token for a user
 function tokenForUser(user) {
