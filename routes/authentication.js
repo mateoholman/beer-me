@@ -29,7 +29,7 @@ router.post('/signin', signinStrategy, function(req, res, next) {
 
 router.post('/signup', function(req, res, next) {
   // Grab the username and password from our request body
-  const { username, password } = req.body;
+  const { username, password, name } = req.body;
 
   // If no username or password was supplied return an error
   if (!username || !password) {
@@ -53,7 +53,7 @@ router.post('/signup', function(req, res, next) {
         }
 
         // Create a new user with the supplied username, and the hashed password
-        const user = new User({ username, password: hashedPassword });
+        const user = new User({ username, password: hashedPassword, name });
 
         // Save and return the user
         user.save()
