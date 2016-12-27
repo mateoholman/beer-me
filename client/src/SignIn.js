@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 
 import './css/SignIn.css';
@@ -61,7 +62,7 @@ class SignIn extends Component {
         </Button>
 
       </form>
-      <p>Don't have an account? Sign Up</p>
+      <p>Don't have an account? <a href="/signup">Sign Up</a></p>
       </div>
     );
   }

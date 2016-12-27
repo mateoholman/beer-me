@@ -1,7 +1,7 @@
 // Setup alert message area or Component
 
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, browserHistory, Match, Miss } from 'react-router';
+import { BrowserRouter, Link, Match, Miss } from 'react-router';
 import axios from 'axios';
 
 import MainContainer from './MainContainer';
@@ -93,11 +93,10 @@ class App extends Component {
 
   render() {
     return (
-      <Router history={browserHistory}>
-        <Route path='/' component={MainContainer}>
-          <IndexRoute render={() => <h1>Hello There!</h1>} />
-        </Route>
-      </Router>
+      <div className="App">
+      <TopNavbar showNavItems={true} onSignOut={this.handleSignOut.bind(this)} />
+      { this.state.authenticated ? this.renderApp() : <SignIn onSignIn={this.handleSignIn.bind(this)} />}
+      </div>
     );
   }
 }

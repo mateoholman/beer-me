@@ -6,6 +6,7 @@ class SignUp extends Component {
     super();
 
     this.state = {
+      name: '',
       username: '',
       password: '',
       confirmPassword: '',
@@ -16,6 +17,7 @@ class SignUp extends Component {
     event.preventDefault();
 
     this.props.onSignUp({
+      name: this.state.name,
       username: this.state.username,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword
@@ -34,6 +36,17 @@ class SignUp extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
+        <FormGroup>
+          <ControlLabel>Name</ControlLabel>
+          <FormControl
+            type="text"
+            name="name"
+            onChange={event => this.handleChange(event)}
+            placeholder="Enter Full Name"
+            value={this.state.name}
+          />
+        </FormGroup>
+
         <FormGroup>
           <ControlLabel>Username</ControlLabel>
           <FormControl
@@ -67,7 +80,7 @@ class SignUp extends Component {
           />
         </FormGroup>
 
-        <Button type="submit">
+        <Button bsyle="primary" type="submit">
          Sign Up
        </Button>
       </form>
