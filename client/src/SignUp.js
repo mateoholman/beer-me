@@ -1,24 +1,24 @@
 import React, { Component, PropTypes } from 'react';
-import { FormGroup, FormControl, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
-import './css/SignIn.css';
-
-class SignIn extends Component {
-
+class SignUp extends Component {
   constructor() {
     super();
+
     this.state = {
       username: '',
-      password: ''
-    };
+      password: '',
+      confirmPassword: '',
+    }
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    this.props.onSignIn({
+    this.props.onSignUp({
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword
     });
   }
 
@@ -33,10 +33,9 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className="form-container">
-      <h2>Sign In</h2>
       <form onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup>
+          <ControlLabel>Username</ControlLabel>
           <FormControl
             type="email"
             name="username"
@@ -47,6 +46,7 @@ class SignIn extends Component {
         </FormGroup>
 
         <FormGroup>
+          <ControlLabel>Password</ControlLabel>
           <FormControl
             type="password"
             name="password"
@@ -56,20 +56,27 @@ class SignIn extends Component {
           />
         </FormGroup>
 
-        <Button bsStyle="primary" type="submit">
-         Sign In
-        </Button>
+        <FormGroup>
+          <ControlLabel>Confirm Password</ControlLabel>
+          <FormControl
+            type="password"
+            name="confirmPassword"
+            onChange={event => this.handleChange(event)}
+            placeholder="Confirm Password"
+            value={this.state.confirmPassword}
+          />
+        </FormGroup>
 
+        <Button type="submit">
+         Sign Up
+       </Button>
       </form>
-      <p>Don't have an account? Sign Up</p>
-      </div>
     );
   }
+}
 
-}//End SignIn
-
-SignIn.propTypes = {
-  onSignIn: PropTypes.func.isRequired
+SignUp.propTypes = {
+  onSignUp: PropTypes.func.isRequired
 };
 
-export default SignIn;
+export default SignUp;

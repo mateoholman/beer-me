@@ -17,13 +17,17 @@ const TopNavbar = (props) => {
           props.showNavItems ?
           <Nav pullRight>
             <LinkContainer to="/">
-            <NavItem onClick={props.onSignOut}>Sign Out</NavItem>
+              <NavItem onClick={props.onSignOut}>Sign Out</NavItem>
             </LinkContainer>
-            <NavItem><Link to="/secret">Secret</Link></NavItem>
+            <LinkContainer to="/secret">
+              <NavItem>Secret</NavItem>
+            </LinkContainer>
           </Nav>
           :
           <Nav pullRight>
-            <NavItem><Link to="/signIn">Sign In</Link></NavItem>
+            <LinkContainer to="/signIn">
+              <NavItem>Sign In</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       }
