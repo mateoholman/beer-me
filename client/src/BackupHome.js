@@ -1,17 +1,16 @@
-// Why can't you get the Home Component to render?
 // Setup alert message area or Component
 
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { BrowserRouter, Link, Match, Miss } from 'react-router';
 import axios from 'axios';
 
-import MainContainer from './MainContainer';
-import Home from './Home';
-import Secret from './Secret';
+import BeerLists from './BeerLists';
 import SignIn from './SignIn';
+import SignUp from './SignUp';
+import Secret from './Secret';
 import './css/App.css';
 
-class App extends Component {
+class Home extends Component {
 
   constructor() {
     super();
@@ -79,25 +78,25 @@ class App extends Component {
     axios.get('/');
   }
 
-  requireAuth(nextState, replace) {
-    if (!this.state.authenticated) {
-      replace({
-        pathname: '/signin'
-      })
-    }
-  }
+  renderApp() {
+    return (
+      <div>
+        <Match exactly pattern="/" render={() => <h1>Hello There!</h1>} />
+        <Match exactly pattern="/signup" render={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
+        <Match exactly pattern="/secret" component={Secret} />
+        <Miss render={() => <h1>NOT FOUND!</h1>} />
+      </div>
+    );
+  }//End renderApp()
 
   render() {
     return (
-      <Router history={browserHistory}>
-        <Route path='/' component={MainContainer}>
-          <IndexRoute component={Home} />
-        </Route>
-      </Router>
+      <div className="App">
+      <TopNavbar showNavItems={true} onSignOut={this.handleSignOut.bind(this)} />
+      { this.state.authenticated ? this.renderApp() : <SignIn onSignIn={this.handleSignIn.bind(this)} />}
+      </div>
     );
   }
 }
 
-// <IndexRoute render={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
-
-export default App;
+export default Home;
