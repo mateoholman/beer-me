@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { Link } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const TopNavbar = (props) => {
@@ -16,8 +15,8 @@ const TopNavbar = (props) => {
         <Navbar.Collapse>
           props.showNavItems ?
           <Nav pullRight>
-            <LinkContainer to="/">
-              <NavItem onClick={props.onSignOut}>Sign Out</NavItem>
+            <LinkContainer to="/signout">
+              <NavItem>Sign Out</NavItem>
             </LinkContainer>
             <LinkContainer to="/secret">
               <NavItem>Secret</NavItem>

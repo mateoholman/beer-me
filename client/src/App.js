@@ -1,15 +1,11 @@
 // Setup alert message area or Component
 
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, browserHistory, Match, Miss } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import axios from 'axios';
 
 import MainContainer from './MainContainer';
-import TopNavbar from './TopNavbar';
-import BeerLists from './BeerLists';
 import SignIn from './SignIn';
-import SignUp from './SignUp';
-import Secret from './Secret';
 import './css/App.css';
 
 class App extends Component {
@@ -80,26 +76,17 @@ class App extends Component {
     axios.get('/');
   }
 
-  renderApp() {
-    return (
-      <div>
-        <Match exactly pattern="/" render={() => <h1>Hello There!</h1>} />
-        <Match exactly pattern="/signup" render={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
-        <Match exactly pattern="/secret" component={Secret} />
-        <Miss render={() => <h1>NOT FOUND!</h1>} />
-      </div>
-    );
-  }//End renderApp()
-
   render() {
     return (
       <Router history={browserHistory}>
-        <Route path='/' component={MainContainer}>
-          <IndexRoute render={() => <h1>Hello There!</h1>} />
+        <Route path='/' component={() => <MainContainer auth={this.state.authenticated} />}>
+
         </Route>
       </Router>
     );
   }
 }
+
+// <IndexRoute render={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
 
 export default App;

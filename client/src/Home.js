@@ -4,15 +4,13 @@ import React, { Component } from 'react';
 import { BrowserRouter, Link, Match, Miss } from 'react-router';
 import axios from 'axios';
 
-import MainContainer from './MainContainer';
-import TopNavbar from './TopNavbar';
 import BeerLists from './BeerLists';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Secret from './Secret';
 import './css/App.css';
 
-class App extends Component {
+class Home extends Component {
 
   constructor() {
     super();
@@ -101,4 +99,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

@@ -6,7 +6,7 @@ import TopNavbar from './TopNavbar';
 const MainContainer = (props) => {
   return (
     <div>
-      <TopNavbar />
+      <TopNavbar showNavItems={props.auth} />
       {props.children}
     </div>
   );
