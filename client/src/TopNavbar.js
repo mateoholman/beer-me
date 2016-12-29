@@ -34,7 +34,7 @@ const TopNavbar = (props) => {
 }
 
 TopNavbar.propTypes = {
-  showNavItems: PropTypes.bool.isRequired
+  showNavItems: PropTypes.bool
 };
 
 export default TopNavbar;

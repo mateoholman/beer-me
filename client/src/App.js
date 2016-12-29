@@ -1,5 +1,4 @@
-// Why can't you get the Home Component to render?
-// Setup alert message area or Component
+// Catch & post handleSignIn error messages
 
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -9,7 +8,6 @@ import MainContainer from './MainContainer';
 import Home from './Home';
 import Secret from './Secret';
 import SignIn from './SignIn';
-import TopNavbar from './TopNavbar';
 import './css/App.css';
 
 class App extends Component {
@@ -92,7 +90,7 @@ class App extends Component {
     return (
       <div>
       <Router history={browserHistory}>
-        <Route path='/' component={(props) => (<MainContainer showNavItems={this.state.authenticated} children={props.children}/>)}>
+        <Route path='/' component={(props) => (<MainContainer alertMessage={this.state.alertMessage} showNavItems={this.state.authenticated} children={props.children}/>)}>
           <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
         </Route>
