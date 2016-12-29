@@ -1,0 +1,12 @@
+.form-container {
+  text-align: center;
+}
+
+form {
+  margin: 3em 5em;
+}
+
+.form-control {
+  margin: 0 auto;
+  max-width: 20em;
+}

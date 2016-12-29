@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, Button } from 'react-bootstrap';
 
 class SignUp extends Component {
   constructor() {
@@ -35,9 +35,9 @@ class SignUp extends Component {
 
   render() {
     return (
+      <div className="form-container">
       <form onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup>
-          <ControlLabel>Name</ControlLabel>
           <FormControl
             type="text"
             name="name"
@@ -48,7 +48,6 @@ class SignUp extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Username</ControlLabel>
           <FormControl
             type="email"
             name="username"
@@ -59,7 +58,6 @@ class SignUp extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Password</ControlLabel>
           <FormControl
             type="password"
             name="password"
@@ -70,7 +68,6 @@ class SignUp extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Confirm Password</ControlLabel>
           <FormControl
             type="password"
             name="confirmPassword"
@@ -80,10 +77,11 @@ class SignUp extends Component {
           />
         </FormGroup>
 
-        <Button bsyle="primary" type="submit">
+        <Button bsStyle="primary" type="submit">
          Sign Up
        </Button>
       </form>
+      </div>
     );
   }
 }

@@ -8,6 +8,7 @@ import MainContainer from './MainContainer';
 import Home from './Home';
 import Secret from './Secret';
 import SignIn from './SignIn';
+import SignUp from './SignUp';
 import './css/App.css';
 
 class App extends Component {
@@ -93,13 +94,12 @@ class App extends Component {
         <Route path='/' component={(props) => (<MainContainer alertMessage={this.state.alertMessage} showNavItems={this.state.authenticated} children={props.children}/>)}>
           <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
+          <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
         </Route>
       </Router>
       </div>
     );
   }
 }
-
-// <IndexRoute render={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
 
 export default App;
