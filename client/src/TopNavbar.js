@@ -9,11 +9,10 @@ const TopNavbar = (props) => {
         <Navbar.Brand>
           Beer Me!
         </Navbar.Brand>
-        { props.showNavItems ? <Navbar.Toggle /> : null }
+        <Navbar.Toggle />
       </Navbar.Header>
-      {
         <Navbar.Collapse>
-          props.showNavItems ?
+          { props.showNavItems ?
           <Nav pullRight>
             <LinkContainer to="/signout">
               <NavItem>Sign Out</NavItem>
@@ -28,8 +27,8 @@ const TopNavbar = (props) => {
               <NavItem>Sign In</NavItem>
             </LinkContainer>
           </Nav>
+          }
         </Navbar.Collapse>
-      }
     </Navbar>
   );
 }

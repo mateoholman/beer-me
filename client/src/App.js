@@ -9,6 +9,7 @@ import MainContainer from './MainContainer';
 import Home from './Home';
 import Secret from './Secret';
 import SignIn from './SignIn';
+import TopNavbar from './TopNavbar';
 import './css/App.css';
 
 class App extends Component {
@@ -89,11 +90,15 @@ class App extends Component {
 
   render() {
     return (
+      <div>
+      <TopNavbar showNavItems={this.state.authenticated} />
       <Router history={browserHistory}>
         <Route path='/' component={MainContainer}>
           <IndexRoute component={Home} />
+          <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
         </Route>
       </Router>
+      </div>
     );
   }
 }
