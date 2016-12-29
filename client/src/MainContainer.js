@@ -7,13 +7,11 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
-
+        <TopNavbar showNavItems={this.props.showNavItems} />
         {this.props.children}
       </div>
   );
 }
 }
-
-// <TopNavbar showNavItems={this.props.showNav} />
 
 export default MainContainer;

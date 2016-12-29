@@ -91,9 +91,8 @@ class App extends Component {
   render() {
     return (
       <div>
-      <TopNavbar showNavItems={this.state.authenticated} />
       <Router history={browserHistory}>
-        <Route path='/' component={MainContainer}>
+        <Route path='/' component={(props) => (<MainContainer showNavItems={this.state.authenticated} children={props.children}/>)}>
           <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
         </Route>

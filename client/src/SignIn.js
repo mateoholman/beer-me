@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 
 import './css/SignIn.css';
