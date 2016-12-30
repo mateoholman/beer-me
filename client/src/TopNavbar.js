@@ -26,6 +26,9 @@ const TopNavbar = (props) => {
             <LinkContainer to="/signIn">
               <NavItem>Sign In</NavItem>
             </LinkContainer>
+            <LinkContainer to="/signUp">
+              <NavItem>Sign Up</NavItem>
+            </LinkContainer>
           </Nav>
           }
         </Navbar.Collapse>

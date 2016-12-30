@@ -1,4 +1,7 @@
+// Fix SignOut Component
 // Catch & post handleSignIn error messages
+// Add alert messages for SignUp & SignIn
+// Add redirects for successful SignUp & SignIn
 
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -9,6 +12,7 @@ import Home from './Home';
 import Secret from './Secret';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import SignOut from './SignOut';
 import './css/App.css';
 
 class App extends Component {
@@ -39,6 +43,8 @@ class App extends Component {
            authenticated: token
          });
          localStorage.setItem('token', token);
+         console.log('You have signed up!');
+         browserHistory.push('/secret');
        });
    }
  }//End handleSignUp()
@@ -58,13 +64,13 @@ class App extends Component {
       axios.post('/api/signin', credentials)
         .then(resp => {
           const { token } = resp.data;
-           localStorage.setItem('token', token);
-          console.log('The sign in token is: ' + token);
+          localStorage.setItem('token', token);
           this.setState({
             ...this.state,
             alertMessage: '',
             authenticated: token
           });
+          browserHistory.push('/secret');
         });
     }
   }//End handleSignIn()
@@ -73,10 +79,9 @@ class App extends Component {
     localStorage.removeItem('token');
     this.setState({
       alertMessage: 'You have been logged out',
-      authenticated: null
+      authenticated: localStorage.getItem('token')
     });
     console.log('Authenticated state is: ' + this.state.authenticated);
-    axios.get('/');
   }
 
   requireAuth(nextState, replace) {
@@ -95,6 +100,8 @@ class App extends Component {
           <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
+          <Route path='/secret' component={Secret} />
+          <Route path='/signout' component={() => <SignOut signOut={this.handleSignOut.bind(this)} />} />
         </Route>
       </Router>
       </div>
