@@ -14,7 +14,7 @@ const TopNavbar = (props) => {
         <Navbar.Collapse>
           { props.showNavItems ?
           <Nav pullRight>
-            <LinkContainer to="/signout">
+            <LinkContainer to="/" onClick={props.signOut}>
               <NavItem>Sign Out</NavItem>
             </LinkContainer>
             <LinkContainer to="/secret">
@@ -37,7 +37,8 @@ const TopNavbar = (props) => {
 }
 
 TopNavbar.propTypes = {
-  showNavItems: PropTypes.bool
+  showNavItems: PropTypes.string,
+  signOut: PropTypes.func
 };
 
 export default TopNavbar;

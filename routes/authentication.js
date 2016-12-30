@@ -10,12 +10,7 @@ require('../services/passport');
 
 // Setup our sign-in strategy. We disable sessions because we are requiring
 // credentials to be supplied with each request to our API server.
-const signinStrategy = passport.authenticate('signinStrategy',
-  { session: false,
-    successRedirect: '/',
-    failureRedirect: '/signin',
-    failureFlash: true
-});
+const signinStrategy = passport.authenticate('signinStrategy', { session: false});
 
 // Helper method to create a token for a user
 function tokenForUser(user) {
@@ -29,7 +24,7 @@ router.post('/signin', signinStrategy, function(req, res, next) {
 
 router.post('/signup', function(req, res, next) {
   // Grab the username and password from our request body
-  const { username, password, name } = req.body;
+  const { name, username, password } = req.body;
 
   // If no username or password was supplied return an error
   if (!username || !password) {

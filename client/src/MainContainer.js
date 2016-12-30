@@ -8,7 +8,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
-        <TopNavbar showNavItems={this.props.showNavItems} />
+        <TopNavbar showNavItems={this.props.showNavItems} signOut={this.props.signOut}/>
         <AlertArea message={this.props.alertMessage} />
         {this.props.children}
       </div>

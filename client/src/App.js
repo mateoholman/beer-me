@@ -85,7 +85,7 @@ class App extends Component {
   }
 
   requireAuth(nextState, replace) {
-    if (!this.state.authenticated) {
+    if (this.state.authenticated === null) {
       replace({
         pathname: '/signin'
       })
@@ -96,7 +96,7 @@ class App extends Component {
     return (
       <div>
       <Router history={browserHistory}>
-        <Route path='/' component={(props) => (<MainContainer alertMessage={this.state.alertMessage} showNavItems={this.state.authenticated} children={props.children}/>)}>
+        <Route path='/' component={(props) => (<MainContainer alertMessage={this.state.alertMessage} showNavItems={this.state.authenticated} signOut={this.handleSignOut.bind(this)} children={props.children}/>)}>
           <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
