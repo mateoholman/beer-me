@@ -1,7 +1,5 @@
-// Fix SignOut Component
 // Catch & post handleSignIn error messages
 // Add alert messages for SignUp & SignIn
-// Add redirects for successful SignUp & SignIn
 
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -12,7 +10,6 @@ import Home from './Home';
 import Secret from './Secret';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import SignOut from './SignOut';
 import './css/App.css';
 
 class App extends Component {
@@ -28,7 +25,7 @@ class App extends Component {
 
   handleSignUp(credentials) {
    const { name, username, password, confirmPassword } = credentials;
-   if (!username.trim() || !password.trim() || password.trim() !== confirmPassword.trim()) {
+   if (!name.trim() || !username.trim() || !password.trim() || password.trim() !== confirmPassword.trim()) {
      this.setState({
        ...this.state,
        alertMessage: 'Must Provide All Fields'
@@ -37,9 +34,10 @@ class App extends Component {
      axios.post('/api/signup', credentials)
        .then(resp => {
          const { token } = resp.data;
+         const altMsg = username + " account has been created.";
          this.setState({
            ...this.state,
-           alertMessage: '',
+           alertMessage: altMsg,
            authenticated: token
          });
          localStorage.setItem('token', token);
@@ -101,7 +99,6 @@ class App extends Component {
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
           <Route path='/secret' component={Secret} />
-          <Route path='/signout' component={() => <SignOut signOut={this.handleSignOut.bind(this)} />} />
         </Route>
       </Router>
       </div>
