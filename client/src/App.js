@@ -1,5 +1,6 @@
 // Catch & post handleSignIn error messages
 // Add alert messages for SignUp & SignIn
+// Improve alert messaging
 
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -10,6 +11,7 @@ import Home from './Home';
 import Secret from './Secret';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import BeerLists from './BeerLists';
 import './css/App.css';
 
 class App extends Component {
@@ -41,8 +43,7 @@ class App extends Component {
            authenticated: token
          });
          localStorage.setItem('token', token);
-         console.log('You have signed up!');
-         browserHistory.push('/secret');
+         browserHistory.push('/beerLists');
        });
    }
  }//End handleSignUp()
@@ -68,7 +69,7 @@ class App extends Component {
             alertMessage: '',
             authenticated: token
           });
-          browserHistory.push('/secret');
+          browserHistory.push('/beerLists');
         });
     }
   }//End handleSignIn()
@@ -99,6 +100,7 @@ class App extends Component {
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
           <Route path='/secret' component={Secret} />
+          <Route path='/beerLists' component={BeerLists} />
         </Route>
       </Router>
       </div>
