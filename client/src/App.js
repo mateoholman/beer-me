@@ -12,6 +12,7 @@ import Secret from './Secret';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import BeerLists from './BeerLists';
+import BeerListForm from './BeerListForm';
 import './css/App.css';
 
 class App extends Component {
@@ -101,6 +102,7 @@ class App extends Component {
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
           <Route path='/secret' component={Secret} />
           <Route path='/beerLists' component={BeerLists} />
+          <Route path='/newBeerList' component={BeerListForm} />
         </Route>
       </Router>
       </div>

@@ -1,0 +1,23 @@
+.beer-list {
+  border: 1px black solid;
+  text-align: center;
+  height: 7em;
+  margin: 1em auto;
+}
+
+.beer-list-avatar {
+  float: left;
+  text-align: center;
+  margin: 1em;
+}
+
+.beer-list-avatar img {
+  height: 5em;
+  width: 5em;
+  border: 1px black solid;
+  border-radius: 50%;
+}
+
+.beer-list-title {
+  margin: 0 auto;
+}

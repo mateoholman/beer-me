@@ -39,11 +39,11 @@ app.use(bodyParser.json());
 //Setup our routes
 const authenticationRoutes = require('./routes/authentication');
 const authStrategy = passport.authenticate('authStrategy', { session: false });
-// const listRoutes = require('./routes/list');
+const listRoutes = require('./routes/list');
 // const itemRoutes = require('./routes/item');
 
 app.use('/api', authenticationRoutes);
-// app.use('/api/lists', authStrategy, listRoutes);
+app.use('/api/lists', authStrategy, listRoutes);
 // app.use('/api/items', authStrategy, itemRoutes);
 
 app.get('/api/secret', authStrategy, function(req, res, next) {
