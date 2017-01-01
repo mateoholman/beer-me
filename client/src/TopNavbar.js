@@ -14,11 +14,14 @@ const TopNavbar = (props) => {
         <Navbar.Collapse>
           { props.showNavItems ?
           <Nav pullRight>
-            <LinkContainer to="/" onClick={props.signOut}>
-              <NavItem>Sign Out</NavItem>
+            <LinkContainer to="/beerLists">
+              <NavItem>Beer Lists</NavItem>
             </LinkContainer>
             <LinkContainer to="/secret">
               <NavItem>Secret</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/" onClick={props.signOut}>
+              <NavItem>Sign Out</NavItem>
             </LinkContainer>
           </Nav>
           :

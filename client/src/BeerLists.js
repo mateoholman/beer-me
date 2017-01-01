@@ -22,7 +22,6 @@ class BeerLists extends Component {
 
   render() {
     const bLists = this.state.beerLists;
-    console.log("bLists is: " + bLists);
     return (
       <div id="beer-lists-container">
         <h1>Badass Beer Lists</h1>

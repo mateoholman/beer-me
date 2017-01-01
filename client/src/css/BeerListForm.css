@@ -1,0 +1,7 @@
+.new-list-form {
+  text-align: center;
+}
+
+.form-group #title, #avatar {
+  width: 50%;
+}

@@ -1,7 +1,8 @@
-//Plug the form into the App so we can create new lists.
+//Change the submit function so we can create new lists.
 
 import React, { Component } from 'react';
-import { FormGroup } from 'react-bootstrap';
+import { FormGroup, Button } from 'react-bootstrap';
+import './css/BeerListForm.css';
 
 class BeerListForm extends Component {
   constructor() {
@@ -33,7 +34,7 @@ class BeerListForm extends Component {
 
   render() {
     return (
-      <div className="title-block">
+      <div className="new-list-form">
       <h1>Create New List</h1>
 
       <form onSubmit={this.handleSubmit.bind(this)}>
@@ -41,7 +42,7 @@ class BeerListForm extends Component {
         <FormGroup>
         <input
           id='title'
-          className='contact-field'
+          className='new-list-field'
           type='text'
           placeholder='List Title...'
           value={this.state.title}
@@ -52,7 +53,7 @@ class BeerListForm extends Component {
         <FormGroup>
         <input
           id='avatar'
-          className='contact-field'
+          className='new-list-field'
           type='text'
           placeholder='Avatar URL...'
           value={this.state.avatar}
@@ -60,7 +61,7 @@ class BeerListForm extends Component {
         />
         </FormGroup>
 
-        <input type='submit' value="Add List" className="submit-button" />
+        <Button type='submit' bsStyle="primary">Add List</Button>
 
       </form>
       </div>
