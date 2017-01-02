@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
@@ -16,7 +17,6 @@ class BeerLists extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    console.log("clicked!");
     browserHistory.push('/newBeerList');
   }
 
@@ -26,25 +26,23 @@ class BeerLists extends Component {
       <div id="beer-lists-container">
         <h1>Badass Beer Lists</h1>
         <Button bsStyle="primary" bsSize="small" onClick={this.handleClick.bind(this)}>New List</Button>
-
+        <div className='beer-lists'>
+          {
+            bLists.map(list => {
+            return(
+              <BeerList
+                key={list._id}
+                id={list._id}
+                title={list.title}
+                avatar={list.avatar}
+              />
+            )
+          }
+        )}
+        </div>
       </div>
     );
   }
-
-  // <div className='beer-lists'>
-  //   {
-  //     bLists.map(list => {
-  //     return(
-  //       <BeerList
-  //         key={list._id}
-  //         id={list._id}
-  //         title={list.title}
-  //         avatar={list.avatar}
-  //       />
-  //     )
-  //   }
-  // )}
-  // </div>
 
   componentDidMount() {
     axios.get('/api/lists', {

@@ -3,6 +3,7 @@
   text-align: center;
   height: 7em;
   margin: 1em auto;
+  max-width: 30em;
 }
 
 .beer-list-avatar {

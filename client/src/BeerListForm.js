@@ -1,7 +1,10 @@
+//Do a test list creation with PostMan
 //Change the submit function so we can create new lists.
 
 import React, { Component } from 'react';
 import { FormGroup, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { browserHistory } from 'react-bootstrap';
 import './css/BeerListForm.css';
 
 class BeerListForm extends Component {
@@ -25,11 +28,10 @@ class BeerListForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { title, avatar} = this.state;
-    this.props.onAdd({ title, avatar });
-    this.setState({
-        title: '',
-        avatar: ''
-    });
+    axios.post('/api/lists', { title, avatar }, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }});
   }
 
   render() {
