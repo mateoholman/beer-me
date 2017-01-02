@@ -13,6 +13,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import BeerLists from './BeerLists';
 import BeerListForm from './BeerListForm';
+import ShowBeerList from './ShowBeerList';
 import './css/App.css';
 
 class App extends Component {
@@ -103,6 +104,7 @@ class App extends Component {
           <Route path='/secret' component={Secret} />
           <Route path='/beerLists' component={BeerLists} />
           <Route path='/newBeerList' component={BeerListForm} />
+          <Route path='/showBeerList' component={() => <ShowBeerList />} />
         </Route>
       </Router>
       </div>

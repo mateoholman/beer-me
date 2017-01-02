@@ -1,3 +1,4 @@
+// Create a list view when the user clicks on a BeerList
 
 import React, { Component } from 'react';
 import axios from 'axios';
@@ -20,6 +21,10 @@ class BeerLists extends Component {
     browserHistory.push('/newBeerList');
   }
 
+  showBeer(id) {
+    console.log('You want to see the beer with id: ' + id);
+  }
+
   render() {
     const bLists = this.state.beerLists;
     return (
@@ -35,6 +40,7 @@ class BeerLists extends Component {
                 id={list._id}
                 title={list.title}
                 avatar={list.avatar}
+                showBeer={this.showBeer.bind(this)}
               />
             )
           }

@@ -1,10 +1,9 @@
-//Do a test list creation with PostMan
-//Change the submit function so we can create new lists.
+// Forward to a show view of the newly created list after submit.
 
 import React, { Component } from 'react';
 import { FormGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { browserHistory } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 import './css/BeerListForm.css';
 
 class BeerListForm extends Component {
@@ -32,6 +31,7 @@ class BeerListForm extends Component {
       headers: {
         authorization: localStorage.getItem('token')
       }});
+    browserHistory.push('/beerLists');
   }
 
   render() {
