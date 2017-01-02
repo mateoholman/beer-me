@@ -23,7 +23,8 @@ class App extends Component {
 
     this.state = {
       alertMessage: '',
-      authenticated: localStorage.getItem('token')
+      authenticated: localStorage.getItem('token'),
+      beerID: '',
     };
   }
 
@@ -93,6 +94,15 @@ class App extends Component {
     }
   }
 
+  showBeer(id) {
+    console.log('You want to see the beer with id: ' + id);
+    // Send the id up to state & then call the component?
+    this.setState({
+      ...this.state,
+      beerID: id
+    });
+  }
+
   render() {
     return (
       <div>
@@ -102,9 +112,9 @@ class App extends Component {
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
           <Route path='/secret' component={Secret} />
-          <Route path='/beerLists' component={BeerLists} />
+          <Route path='/beerLists' component={() => <BeerLists showBeer={this.showBeer.bind(this)} />} />
           <Route path='/newBeerList' component={BeerListForm} />
-          <Route path='/showBeerList' component={() => <ShowBeerList />} />
+          <Route path='/showBeerList' component={() => <ShowBeerList beerId={this.state.beerID} />} />
         </Route>
       </Router>
       </div>

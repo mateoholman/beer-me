@@ -6,6 +6,10 @@
   max-width: 30em;
 }
 
+.beer-list:hover {
+  background-color: #ADD8E6;
+}
+
 .beer-list-avatar {
   float: left;
   text-align: center;
