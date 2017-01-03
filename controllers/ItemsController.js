@@ -31,7 +31,13 @@ module.exports = {
 
         // Create a new ItemModel and save it
         return new ItemModel({
-          text: req.body.text,
+          name: req.body.name,
+          description: req.body.description,
+          abv: req.body.abv,
+          ibu: req.body.ibu,
+          brewedBy: req.body.brewedBy,
+          style: req.body.style,
+          label: req.body.label,
           user: userId,
           list: listId,
         }).save();

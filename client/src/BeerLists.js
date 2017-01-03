@@ -1,5 +1,3 @@
-// Create a list view when the user clicks on a BeerList
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
