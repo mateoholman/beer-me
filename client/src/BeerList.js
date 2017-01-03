@@ -15,7 +15,7 @@ class BeerList extends Component {
           <img src={this.props.avatar} alt="A frosty mug of beer" />
         </div>
         <div className="beer-list-title">
-          <h2>{this.props.title}</h2>
+          <Link to='/showBeerList'> <h2>{this.props.title}</h2> </Link>
         </div>
       </div>
     )

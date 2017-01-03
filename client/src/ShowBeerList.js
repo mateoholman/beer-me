@@ -20,3 +20,5 @@ class ShowBeerList extends Component {
   }
 
 }// End ShowBeerList
+
+export default ShowBeerList;

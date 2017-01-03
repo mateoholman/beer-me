@@ -11,6 +11,8 @@ import Home from './Home';
 import Secret from './Secret';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import NotFound from './NotFound';
+
 import BeerLists from './BeerLists';
 import BeerListForm from './BeerListForm';
 import ShowBeerList from './ShowBeerList';
@@ -96,11 +98,6 @@ class App extends Component {
 
   showBeer(id) {
     console.log('You want to see the beer with id: ' + id);
-    // Send the id up to state & then call the component?
-    this.setState({
-      ...this.state,
-      beerID: id
-    });
   }
 
   render() {
@@ -111,10 +108,11 @@ class App extends Component {
           <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
+          <Route path='*' component={NotFound} />
           <Route path='/secret' component={Secret} />
           <Route path='/beerLists' component={() => <BeerLists showBeer={this.showBeer.bind(this)} />} />
           <Route path='/newBeerList' component={BeerListForm} />
-          <Route path='/showBeerList' component={() => <ShowBeerList beerId={this.state.beerID} />} />
+          <Route path='/showBeerList/:id' component={ShowBeerList} />
         </Route>
       </Router>
       </div>
