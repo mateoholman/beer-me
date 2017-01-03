@@ -36,7 +36,6 @@ class BeerLists extends Component {
                 id={list._id}
                 title={list.title}
                 avatar={list.avatar}
-                showBeer={this.props.showBeer.bind(this)}
               />
             )
           }

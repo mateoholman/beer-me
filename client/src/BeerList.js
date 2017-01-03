@@ -4,18 +4,15 @@ import './css/BeerList.css';
 
 class BeerList extends Component {
 
-  handleClick(event) {
-    this.props.showBeer(this.props.id);
-  }
-
   render() {
+    const beerIdPath = '/showBeerList/' + this.props.id;
     return (
-      <div className="beer-list" onClick={this.handleClick.bind(this)}>
+      <div className="beer-list">
         <div className="beer-list-avatar">
           <img src={this.props.avatar} alt="A frosty mug of beer" />
         </div>
         <div className="beer-list-title">
-          <Link to='/showBeerList'> <h2>{this.props.title}</h2> </Link>
+          <Link to={beerIdPath}> <h2>{this.props.title}</h2> </Link>
         </div>
       </div>
     )

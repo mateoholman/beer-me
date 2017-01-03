@@ -26,7 +26,6 @@ class App extends Component {
     this.state = {
       alertMessage: '',
       authenticated: localStorage.getItem('token'),
-      beerID: '',
     };
   }
 
@@ -108,11 +107,11 @@ class App extends Component {
           <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
-          <Route path='*' component={NotFound} />
           <Route path='/secret' component={Secret} />
-          <Route path='/beerLists' component={() => <BeerLists showBeer={this.showBeer.bind(this)} />} />
+          <Route path='/beerLists' component={BeerLists} />
           <Route path='/newBeerList' component={BeerListForm} />
-          <Route path='/showBeerList/:id' component={ShowBeerList} />
+          <Route path='/showBeerList(/:id)' component={ShowBeerList} />
+          <Route path='*' component={NotFound} />
         </Route>
       </Router>
       </div>
