@@ -1,5 +1,8 @@
+// Setup an item component similar to the list component in BeerLists
+
 import React, { Component } from 'react';
 import axios from 'axios';
+import './css/ShowBeerList.css';
 
 class ShowBeerList extends Component {
 
@@ -19,7 +22,12 @@ class ShowBeerList extends Component {
     console.log('List Title is: ' + this.state.title);
     return (
       <div id="show-beer-list">
-        <h1>{this.state.title}</h1>
+        <div className="title-avatar">
+          <img src={this.state.avatar} alt="A frosty mug of beer" />
+        </div>
+        <div className="title-listName">
+          <h1>{this.state.title}</h1>
+        </div>
       </div>
     );
   }
