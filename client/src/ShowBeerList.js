@@ -18,8 +18,6 @@ class ShowBeerList extends Component {
   }
 
   render() {
-    console.log('Beer ID is: ' + this.state.id);
-    console.log('List Title is: ' + this.state.title);
     return (
       <div id="show-beer-list">
         <div className="title-avatar">
@@ -32,17 +30,14 @@ class ShowBeerList extends Component {
     );
   }
 
-
   componentDidMount() {
     const pathName = '/api/lists/' + this.state.id;
-    console.log(pathName);
     axios.get(pathName, {
       headers: {
         authorization: localStorage.getItem('token')
       }
     })
       .then(resp => {
-          console.log('The response title is: ' + resp.data.title);
           this.setState({
             ...this.state,
             title: resp.data.title,

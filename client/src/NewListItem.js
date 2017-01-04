@@ -30,12 +30,12 @@ class App extends Component {
   }
 
   handleSearchBarClick(searchTerm) {
-    //Search the OMDB API for the search term.
-    axios.get(`http://api.brewerydb.com/v2/?key={bdbAPI}`)
+    //Search the BreweryDB API for the search term.
+    axios.get(`http://api.brewerydb.com/v2/beers?name={searchTerm}&key={bdbAPI}`)
       .then(resp => {
         //If the movie can't be found in the OMDB API, alert the user
         if (resp.data.Response === 'False') {
-          alert("Ain't no movie with the title " + searchTerm + ". Try again!");
+          alert("Ain't no beer with the title " + searchTerm + ". Try again!");
         }
         else {
         //If the beer was found, show the first page of results?
