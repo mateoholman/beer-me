@@ -1,3 +1,4 @@
+//Test the components current functionality
 //Do some test searches with Postman & our API key to see how the API responds
 //Search for a new beer with the API, then post it as an item to our list
 
@@ -6,20 +7,18 @@ import SearchBar from './SearchBar';
 import axios from 'axios';
 require('dotenv').config()
 
-class App extends Component {
+class NewListItem extends Component {
 
   constructor() {
     super();
     this.state = {
-
-    };
+    }
   }
 
-  const bdbAPI = process.env.APIKEY;
-
   addNewBeer(newBeer) {
+    const bdbAPI = process.env.APIKEY;
     const { name, description, abv, ibu, brewedBy, style, label, user, list } = newBeer;
-    axios.post('/api/item/', { title, director, poster, plot })
+    axios.post('/api/item/', { name, description, abv, ibu, brewedBy, style, label, user, list })
       .then(resp => {
         const beer = resp.data;
         this.setState({

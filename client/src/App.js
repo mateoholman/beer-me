@@ -16,6 +16,7 @@ import NotFound from './NotFound';
 import BeerLists from './BeerLists';
 import BeerListForm from './BeerListForm';
 import ShowBeerList from './ShowBeerList';
+import NewListItem from './NewListItem';
 import './css/App.css';
 
 class App extends Component {
@@ -111,6 +112,7 @@ class App extends Component {
           <Route path='/beerLists' component={BeerLists} />
           <Route path='/newBeerList' component={BeerListForm} />
           <Route path='/showBeerList(/:id)' component={ShowBeerList} />
+          <Route path='/NewListItem' component={NewListItem} />
           <Route path='*' component={NotFound} />
         </Route>
       </Router>
