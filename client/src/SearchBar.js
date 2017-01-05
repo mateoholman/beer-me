@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
 
 class SearchBar extends Component {
   constructor() {
@@ -20,20 +21,19 @@ class SearchBar extends Component {
 
   render() {
   return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <input
-          className='search-bar'
-          type='text'
-          placeholder='Search for a new beer...'
-          value={this.state.searchText}
-          onChange={this.handleSearchBarChange.bind(this)}
-        />
-        <input
-          type='submit'
-          value='Search'
-          className='btn btn-submit'
-        />
-      </form>
+      <Form inline onSubmit={this.handleSubmit.bind(this)}>
+        <FormGroup>
+          <FormControl
+            type='text'
+            placeholder='Search for a new beer...'
+            value={this.state.searchText}
+            onChange={this.handleSearchBarChange.bind(this)}
+          />
+          <Button type='submit' bsStyle="primary">
+            Submit
+          </Button>
+        </ FormGroup>
+      </Form>
     );
   }
 }//End SearchBar
