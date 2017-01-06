@@ -8,6 +8,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const axios = require('axios');
 const chalk = require('chalk');
 
 // Require our custom strategies
@@ -48,6 +49,18 @@ app.use('/api/items', authStrategy, itemRoutes);
 
 app.get('/api/secret', authStrategy, function(req, res, next) {
   res.send(`The current user is ${req.user.username}`);
+});
+
+//Create our own middleware to access the Brewery DB API
+//We'll have to specify a search term that gets passed through the route that
+//we can use on the Brewery DB API.
+app.get('/api/addNewBeer', function(req, res, next) {
+  axios.get(`http://api.brewerydb.com/v2/beers?name=pearl-snap&key=`+process.env.BDBAPI)
+    .then(resp => {
+      res.send(resp.data);
+      })
+  .catch(err => console.log(err))
+
 });
 
 app.all('*', (req, res, next) => {
