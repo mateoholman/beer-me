@@ -29,7 +29,8 @@ class NewListItem extends Component {
 
   handleSearchBarClick(searchTerm) {
     //Search the BreweryDB API for the search term through our server middleware
-    axios.get('/api/addNewBeer')
+    const pathName = "/api/addNewBeer?name=" + searchTerm
+    axios.get(pathName)
       .then(resp => {
         console.log(resp.data.data[0].description);
         })

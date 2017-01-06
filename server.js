@@ -52,10 +52,10 @@ app.get('/api/secret', authStrategy, function(req, res, next) {
 });
 
 //Create our own middleware to access the Brewery DB API
-//We'll have to specify a search term that gets passed through the route that
-//we can use on the Brewery DB API.
+//We specify the search term for the Brewery DB AP through a query.
 app.get('/api/addNewBeer', function(req, res, next) {
-  axios.get(`http://api.brewerydb.com/v2/beers?name=pearl-snap&key=`+process.env.BDBAPI)
+  const pathName = "http://api.brewerydb.com/v2/beers?name=" + req.query.name + "&key=" + process.env.BDBAPI;
+  axios.get(pathName)
     .then(resp => {
       res.send(resp.data);
       })
