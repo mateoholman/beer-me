@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router';
 
 const TopNavbar = (props) => {
   return (
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
-        <Navbar.Brand>
-          Beer Me!
-        </Navbar.Brand>
+        <Link to="/">
+        <Navbar.Brand>Beer Me!</Navbar.Brand>
+        </Link>
         <Navbar.Toggle />
       </Navbar.Header>
         <Navbar.Collapse>

@@ -1,6 +1,5 @@
-//Send the search name to our middleware!
-//Test the components current functionality
-//Do some test searches with Postman & our API key to see how the API responds
+//Show the result of the search
+//Give the user the option to add the beer to their list after the search result
 //Search for a new beer with the API, then post it as an item to our list
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
