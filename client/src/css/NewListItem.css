@@ -5,3 +5,9 @@
 .new-list-item-container input {
 
 }
+
+form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}

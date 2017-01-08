@@ -1,6 +1,8 @@
 // Setup an item component similar to the list component in BeerLists
 
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 import axios from 'axios';
 import './css/ShowBeerList.css';
 
@@ -17,6 +19,11 @@ class ShowBeerList extends Component {
     }
   }
 
+  handleClick(event) {
+    event.preventDefault();
+    browserHistory.push('/newListItem');
+  }
+
   render() {
     return (
       <div id="show-beer-list">
@@ -26,6 +33,7 @@ class ShowBeerList extends Component {
         <div className="title-listName">
           <h1>{this.state.title}</h1>
         </div>
+        <Button bsStyle="primary" block onClick={this.handleClick.bind(this)}>+ New Beer</Button>
       </div>
     );
   }
