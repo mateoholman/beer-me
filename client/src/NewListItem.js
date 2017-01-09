@@ -3,6 +3,7 @@
 //Search for a new beer with the API, then post it as an item to our list
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
+import InfoPanel from './InfoPanel';
 import axios from 'axios';
 import './css/NewListItem.css';
 
@@ -11,6 +12,14 @@ class NewListItem extends Component {
   constructor() {
     super();
     this.state = {
+      showInfoPanel: false,
+      searchedBeer: {
+        name: '',
+        description: '',
+        abv: '',
+        ibu: '',
+        style: ''
+      }
     }
   }
 
@@ -31,7 +40,18 @@ class NewListItem extends Component {
     const pathName = "/api/addNewBeer?name=" + searchTerm
     axios.get(pathName)
       .then(resp => {
-        console.log(resp.data.data[0].description);
+        const { name, description, abv, ibu, style } = resp.data.data[0];
+        this.setState({
+          ...this.state,
+          searchedBeer: {
+            name: name,
+            description: description,
+            abv: abv,
+            ibu: ibu,
+            style: style.name,
+          },
+          showInfoPanel: true,
+        });
         })
     .catch(err => console.log(err))
   }
@@ -41,6 +61,7 @@ class NewListItem extends Component {
       <div className="new-list-item-container">
         <h1>Add A New Beer</h1>
         <SearchBar onSearch={this.handleSearchBarClick.bind(this)} />
+        {this.state.showInfoPanel ? <InfoPanel /> : null}
       </div>
     );
   }
