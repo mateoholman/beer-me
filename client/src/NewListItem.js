@@ -18,13 +18,14 @@ class NewListItem extends Component {
         description: '',
         abv: '',
         ibu: '',
-        style: ''
+        style: '',
+        label: '',
       }
     }
   }
 
   addNewBeer(newBeer) {
-    const { name, description, abv, ibu, brewedBy, style, label, user, list } = newBeer;
+    const { name, description, abv, ibu, style, label, user, list } = newBeer;
     axios.post('/api/item/', { name, description, abv, ibu, brewedBy, style, label, user, list })
       .then(resp => {
         const beer = resp.data;
@@ -40,18 +41,25 @@ class NewListItem extends Component {
     const pathName = "/api/addNewBeer?name=" + searchTerm
     axios.get(pathName)
       .then(resp => {
-        const { name, description, abv, ibu, style } = resp.data.data[0];
-        this.setState({
-          ...this.state,
-          searchedBeer: {
-            name: name,
-            description: description,
-            abv: abv,
-            ibu: ibu,
-            style: style.name,
-          },
-          showInfoPanel: true,
-        });
+        //If the beer can't be found in the BreweryDB API, alert the user
+        console.log('Resp.data.data is: ' + resp.data.data);
+        if (resp.data.data === undefined) {
+          alert("Ain't no beer with the name " + searchTerm + ". Try again!");
+        }
+        else {
+          const { name, description, abv, ibu, style, labels } = resp.data.data[0];
+          this.setState({
+            ...this.state,
+            searchedBeer: {
+              name: name,
+              description: description,
+              abv: abv,
+              ibu: ibu,
+              style: style.name,
+              label: labels,
+            },
+            showInfoPanel: true,
+        });}
         })
     .catch(err => console.log(err))
   }
@@ -61,7 +69,7 @@ class NewListItem extends Component {
       <div className="new-list-item-container">
         <h1>Add A New Beer</h1>
         <SearchBar onSearch={this.handleSearchBarClick.bind(this)} />
-        {this.state.showInfoPanel ? <InfoPanel /> : null}
+        {this.state.showInfoPanel ? <InfoPanel beer={this.state.searchedBeer} /> : null}
       </div>
     );
   }

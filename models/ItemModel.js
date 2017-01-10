@@ -22,11 +22,6 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
 
-  brewedBy: {
-    type: String,
-    required: true,
-  },
-
   style: {
     type: String,
     required: true,
