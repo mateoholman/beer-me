@@ -1,5 +1,7 @@
+//Style InfoPanel
 //Add button to add new beer!
 import React, { Component } from 'react';
+import './css/InfoPanel.css';
 
 class InfoPanel extends Component {
 
@@ -16,16 +18,15 @@ class InfoPanel extends Component {
   render() {
     // return(<h1>Hello World</h1>);
     return (
-      <div className="container info-panel">
-        <div className='beer-label'>
+      <div className="info-panel">
+        <div className='beer-header'>
           {this.props.beer.label ? <img src={this.props.beer.label.icon} alt='A cool beer poster' /> : <p>No Label</p> }
+          <h1>{this.props.beer.name}</h1>
         </div>
         <div className='beer-info'>
-          <h1>{this.props.beer.name}</h1>
-          <h2>ABV: {this.props.beer.abv}</h2>
-          <h2>IBU: {this.props.beer.ibu}</h2>
-          <h2>Style: {this.props.beer.style}</h2>
-          <h2>Description:</h2>
+          <p>ABV: {this.props.beer.abv}</p>
+          <p>IBU: {this.props.beer.ibu}</p>
+          <p>Style: {this.props.beer.style}</p>
           <p>{this.props.beer.description}</p>
         </div>
       </div>

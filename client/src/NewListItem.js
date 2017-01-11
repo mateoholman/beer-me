@@ -26,7 +26,7 @@ class NewListItem extends Component {
 
   addNewBeer(newBeer) {
     const { name, description, abv, ibu, style, label, user, list } = newBeer;
-    axios.post('/api/item/', { name, description, abv, ibu, brewedBy, style, label, user, list })
+    axios.post('/api/item/', { name, description, abv, ibu, style, label, user, list })
       .then(resp => {
         const beer = resp.data;
         this.setState({
@@ -42,7 +42,6 @@ class NewListItem extends Component {
     axios.get(pathName)
       .then(resp => {
         //If the beer can't be found in the BreweryDB API, alert the user
-        console.log('Resp.data.data is: ' + resp.data.data);
         if (resp.data.data === undefined) {
           alert("Ain't no beer with the name " + searchTerm + ". Try again!");
         }
