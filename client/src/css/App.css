@@ -1,3 +1,14 @@
+#App {
+  background-color: black;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+}
+
+#App h1,h2,h3,h4 {
+  color: white;
+}
+
 .App {
   text-align: center;
 }

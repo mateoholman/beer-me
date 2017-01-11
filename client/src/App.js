@@ -102,10 +102,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div id="App">
       <Router history={browserHistory}>
         <Route path='/' component={(props) => (<MainContainer alertMessage={this.state.alertMessage} showNavItems={this.state.authenticated} signOut={this.handleSignOut.bind(this)} children={props.children}/>)}>
-          <IndexRoute component={Home} />
+          <IndexRoute component={Home} onEnter={requireAuth} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
           <Route path='/secret' component={Secret} />
