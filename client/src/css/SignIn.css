@@ -1,5 +1,10 @@
 .form-container {
   text-align: center;
+  color: white;
+}
+
+.form-container button {
+  margin-bottom: 1em;
 }
 
 form {
@@ -9,4 +14,8 @@ form {
 .form-control {
   margin: 0 auto;
   max-width: 20em;
+}
+
+button {
+  margin: 10em;
 }

@@ -1,3 +1,4 @@
+// Route component with onEnter based on user authentication status!
 // Catch & post handleSignIn error messages
 // Add alert messages for SignUp & SignIn
 // Improve alert messaging
@@ -85,13 +86,14 @@ class App extends Component {
       alertMessage: 'You have been logged out',
       authenticated: localStorage.getItem('token')
     });
-    console.log('Authenticated state is: ' + this.state.authenticated);
   }
 
   requireAuth(nextState, replace) {
-    if (this.state.authenticated === null) {
+    console.log('authenticated state is: ' + this.state);
+    if (this.state === undefined) {
       replace({
-        pathname: '/signin'
+        pathname: '/signin',
+        state: { nextPathname: nextState.location.pathname }
       })
     }
   }
@@ -105,7 +107,7 @@ class App extends Component {
       <div id="App">
       <Router history={browserHistory}>
         <Route path='/' component={(props) => (<MainContainer alertMessage={this.state.alertMessage} showNavItems={this.state.authenticated} signOut={this.handleSignOut.bind(this)} children={props.children}/>)}>
-          <IndexRoute component={Home} onEnter={requireAuth} />
+          <IndexRoute component={Home} onEnter={this.requireAuth} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
           <Route path='/secret' component={Secret} />
