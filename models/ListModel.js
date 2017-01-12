@@ -9,7 +9,6 @@ const listSchema = new mongoose.Schema({
 
   avatar: {
     type: String,
-    default: 'https://s7d9.scene7.com/is/image/BedBathandBeyond/51320043137367p?$478$',
   },
 
   user: {

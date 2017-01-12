@@ -1,7 +1,7 @@
 // Forward to a show view of the newly created list after submit.
 
 import React, { Component } from 'react';
-import { FormGroup, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import './css/BeerListForm.css';
@@ -42,10 +42,9 @@ class BeerListForm extends Component {
       <form onSubmit={this.handleSubmit.bind(this)}>
 
         <FormGroup>
-        <input
-          id='title'
-          className='new-list-field'
+        <FormControl
           type='text'
+          name='list-title'
           placeholder='List Title...'
           value={this.state.title}
           onChange={this.handleTitleChange.bind(this)}
@@ -53,10 +52,9 @@ class BeerListForm extends Component {
         </FormGroup>
 
         <FormGroup>
-        <input
-          id='avatar'
-          className='new-list-field'
+        <FormControl
           type='text'
+          name='list-avatar'
           placeholder='Avatar URL...'
           value={this.state.avatar}
           onChange={(event) => this.handleAvatarChange(event)}
