@@ -10,7 +10,6 @@ class MainContainer extends Component {
     return (
       <div id="main-container">
         <TopNavbar showNavItems={this.props.showNavItems} signOut={this.props.signOut}/>
-        <AlertArea message={this.props.alertMessage} />
         {this.props.children}
       </div>
   );

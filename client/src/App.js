@@ -1,7 +1,6 @@
 // Route component with onEnter based on user authentication status!
 // Catch & post handleSignIn error messages
 // Add alert messages for SignUp & SignIn
-// Improve alert messaging
 
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -89,8 +88,7 @@ class App extends Component {
   }
 
   requireAuth(nextState, replace) {
-    console.log('authenticated state is: ' + this.state);
-    if (this.state === undefined) {
+    if (localStorage.getItem('token') === undefined) {
       replace({
         pathname: '/signin',
         state: { nextPathname: nextState.location.pathname }
@@ -98,19 +96,15 @@ class App extends Component {
     }
   }
 
-  showBeer(id) {
-    console.log('You want to see the beer with id: ' + id);
-  }
-
   render() {
     return (
       <div id="App">
       <Router history={browserHistory}>
         <Route path='/' component={(props) => (<MainContainer alertMessage={this.state.alertMessage} showNavItems={this.state.authenticated} signOut={this.handleSignOut.bind(this)} children={props.children}/>)}>
-          <IndexRoute component={Home} onEnter={this.requireAuth} />
+          <IndexRoute component={Home} />
           <Route path='/signin' component={() => <SignIn onSignIn={this.handleSignIn.bind(this)} />} />
           <Route path='/signup' component={() => <SignUp onSignUp={this.handleSignUp.bind(this)} />} />
-          <Route path='/secret' component={Secret} />
+          <Route path='/secret' component={Secret} onEnter={this.requireAuth} />
           <Route path='/beerLists' component={BeerLists} />
           <Route path='/newBeerList' component={BeerListForm} />
           <Route path='/showBeerList(/:id)' component={ShowBeerList} />
