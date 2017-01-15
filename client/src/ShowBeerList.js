@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 import './css/ShowBeerList.css';
+import beerMug from './images/beerMug.jpg';
 
 class ShowBeerList extends Component {
 
@@ -49,7 +50,7 @@ class ShowBeerList extends Component {
           this.setState({
             ...this.state,
             title: resp.data.title,
-            avatar: resp.data.avatar,
+            avatar: resp.data.avatar || beerMug,
             items: resp.data.items
           });
         })

@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import TopNavbar from './TopNavbar';
-import AlertArea from './AlertArea';
 import './css/MainContainer.css';
 
 class MainContainer extends Component {
