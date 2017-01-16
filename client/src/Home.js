@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/Home.css';
 import beerPoster from './images/beerPoster.jpg';
+import beerLogo from './images/beerMeLogo.png';
 import beerBackground from './videos/beerBackground.mp4';
 
 class Home extends Component {

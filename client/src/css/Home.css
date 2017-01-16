@@ -19,3 +19,7 @@ video {
   background: url(../images/beerPoster.jpg) no-repeat;
   background-size: cover;
 }
+
+h1, h2, h3 {
+  z-index: 1;
+}
