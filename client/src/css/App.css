@@ -5,8 +5,16 @@
   margin: 0;
 }
 
-#App h1,h2,h3,h4 {
+#App h1,h2,h3,h4,a,p {
   color: white;
+}
+
+#App h1,h2,h3 {
+  font-family: 'Shrikhand', cursive;
+}
+
+#App p {
+  font-family: 'Rokkitt', serif;
 }
 
 .App {
