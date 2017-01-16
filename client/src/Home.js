@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import './css/Home.css';
 import beerPoster from './images/beerPoster.jpg';
-import beerLogo from './images/beerMeLogo.png';
+import beerLogo from './images/hop2.png';
 import beerBackground from './videos/beerBackground.mp4';
 
 class Home extends Component {
 
   render() {
     return(
-      <div id="home">
+      <div className="home">
+        <div className="video-overlay">
+          <img className="home-logo" src={beerLogo} alt="Beer is cool" />
+          <h1>Beer Me!</h1>
+        </div>
         <video id="background-video" loop autoPlay>
         <source src={beerBackground} type="video/mp4" />
         Your browser does not support the video tag.
