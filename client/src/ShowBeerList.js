@@ -25,6 +25,11 @@ class ShowBeerList extends Component {
     browserHistory.push('/newListItem');
   }
 
+  handleDelClick(e) {
+    e.preventDefault();
+    
+  }
+
   render() {
     return (
       <div id="show-beer-list">
@@ -35,6 +40,7 @@ class ShowBeerList extends Component {
           <h1>{this.state.title}</h1>
         </div>
         <Button bsStyle="primary" block onClick={this.handleClick.bind(this)}>+ New Beer</Button>
+        <Button bsStyle="danger" block onClick={this.handleDelClick.bind(this)}>Delete List</Button>
       </div>
     );
   }
