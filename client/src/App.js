@@ -109,6 +109,7 @@ class App extends Component {
           <Route path='/beerLists' component={BeerLists} />
           <Route path='/newBeerList' component={BeerListForm} />
           <Route path='/showBeerList(/:id)' component={ShowBeerList} />
+          <Route path='/editBeerList(/:id)' component={BeerListForm} />
           <Route path='/NewListItem' component={NewListItem} />
           <Route path='*' component={NotFound} />
         </Route>

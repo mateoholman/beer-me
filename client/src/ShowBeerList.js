@@ -1,3 +1,5 @@
+// Add message if there are no beers currently in the list.
+// Finish basic CRUD operations on your lists.
 // Setup an item component similar to the list component in BeerLists
 
 import React, { Component } from 'react';
@@ -20,9 +22,15 @@ class ShowBeerList extends Component {
     }
   }
 
-  handleClick(event) {
+  handleNewClick(event) {
     event.preventDefault();
     browserHistory.push('/newListItem');
+  }
+
+  handleEditClick(event) {
+    event.preventDefault();
+    const pathName = '/editBeerList/' + this.state.id;
+    browserHistory.push(pathName);
   }
 
   handleDelClick(event) {
@@ -46,7 +54,8 @@ class ShowBeerList extends Component {
         <div className="title-listName">
           <h1>{this.state.title}</h1>
         </div>
-        <Button bsStyle="primary" block onClick={this.handleClick.bind(this)}>+ New Beer</Button>
+        <Button bsStyle="primary" block onClick={this.handleNewClick.bind(this)}>+ New Beer</Button>
+        <Button bsStyle="info" block onClick={this.handleEditClick.bind(this)}>Edit List</Button>
         <Button bsStyle="danger" block onClick={this.handleDelClick.bind(this)}>Delete List</Button>
       </div>
     );

@@ -7,10 +7,11 @@ import { browserHistory } from 'react-router';
 import './css/BeerListForm.css';
 
 class BeerListForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+        id: props.params.id || '',
         title: '',
         avatar: ''
     };
@@ -34,10 +35,35 @@ class BeerListForm extends Component {
     browserHistory.push('/beerLists');
   }
 
+  handleCancelClick(event) {
+    event.preventDefault();
+    browserHistory.push('/beerLists');
+  }
+
+  componentDidMount() {
+    if (this.state.id !== ''){
+      const pathName = '/api/lists/' + this.state.id;
+      axios.get(pathName, {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+      })
+        .then(resp => {
+            this.setState({
+              ...this.state,
+              title: resp.data.title,
+              avatar: resp.data.avatar
+            });
+          })
+        .catch(err => console.log(`Error! ${err}`));
+    }
+
+  }//End componentDidMount
+
   render() {
     return (
       <div className="new-list-form">
-      <h1>Create New List</h1>
+      {this.state.id ? <h1>Edit List</h1> : <h1>Create New List</h1> }
 
       <form onSubmit={this.handleSubmit.bind(this)}>
 
@@ -61,7 +87,8 @@ class BeerListForm extends Component {
         />
         </FormGroup>
 
-        <Button type='submit' bsStyle="primary">Add List</Button>
+        <Button type='submit' bsStyle="primary">Save List</Button>
+        <Button bsStyle="danger" onClick={this.handleCancelClick.bind(this)}>Cancel</Button>
 
       </form>
       </div>
