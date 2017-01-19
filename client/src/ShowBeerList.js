@@ -25,9 +25,16 @@ class ShowBeerList extends Component {
     browserHistory.push('/newListItem');
   }
 
-  handleDelClick(e) {
-    e.preventDefault();
-    
+  handleDelClick(event) {
+    event.preventDefault();
+    axios.delete(`/api/lists/${this.state.id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }})
+      .then(resp => {
+        browserHistory.push('/beerLists');
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
