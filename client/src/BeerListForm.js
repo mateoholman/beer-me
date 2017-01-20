@@ -27,7 +27,7 @@ class BeerListForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { title, avatar} = this.state;
+    const { title, avatar } = this.state;
     axios.post('/api/lists', { title, avatar }, {
       headers: {
         authorization: localStorage.getItem('token')

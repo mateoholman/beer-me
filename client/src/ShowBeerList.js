@@ -25,7 +25,8 @@ class ShowBeerList extends Component {
 
   handleNewClick(event) {
     event.preventDefault();
-    browserHistory.push('/newListItem');
+    const pathName = '/newListItem/' + this.state.id;
+    browserHistory.push(pathName);
   }
 
   handleEditClick(event) {
@@ -47,20 +48,7 @@ class ShowBeerList extends Component {
   }
 
   showBeers() {
-    if (this.state.items.length > 0) {
-      this.state.items.map(beer => {
-      return(
-        <InfoPanel
-          key={beer._id}
-          beer={beer}
-          showDetails={false}
-          showButtons={false}
-        />
-      );})
-    }
-    else {
-      return (<h2>No beers to list</h2>);
-    }
+
   }
 
   render() {
@@ -76,7 +64,20 @@ class ShowBeerList extends Component {
         <Button bsStyle="info" block onClick={this.handleEditClick.bind(this)}>Edit List</Button>
         <Button bsStyle="danger" block onClick={this.handleDelClick.bind(this)}>Delete List</Button>
         <div id="beers">
-          {this.showBeers()}
+          {
+            (this.state.items.length > 0) ?
+              this.state.items.map(beer => {
+              return(
+                <InfoPanel
+                  key={beer._id}
+                  beer={beer}
+                  showDetails={false}
+                  showButtons={false}
+                />
+              );})
+            :
+            (<h2>No beers to list</h2>)
+          }
         </div>
       </div>
     );

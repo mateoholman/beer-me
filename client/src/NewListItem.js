@@ -1,6 +1,7 @@
-//Give the user the option to add the beer to their list after the search result
-//Search for a new beer with the API, then post it as an item to our list
+//Style the beers listed via InfoPanel.
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
+
 import SearchBar from './SearchBar';
 import InfoPanel from './InfoPanel';
 import axios from 'axios';
@@ -8,10 +9,11 @@ import './css/NewListItem.css';
 
 class NewListItem extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showInfoPanel: false,
+      listId: props.params.id,
       searchedBeer: {
         name: '',
         description: '',
@@ -50,12 +52,31 @@ class NewListItem extends Component {
     .catch(err => console.log(err))
   }
 
+  handleAddBeer(event) {
+    event.preventDefault();
+      const { name, description, abv, ibu, style } = this.state.searchedBeer;
+      const label = this.state.searchedBeer.label.icon;
+      const list = this.state.listId;
+      axios.post('/api/items', { list, name, description, abv, ibu, style, label }, {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }});
+  }
+
+  handleCloseClick(event){
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      showInfoPanel: false
+    });
+  }
+
   render() {
     return (
       <div className="new-list-item-container">
         <h1>Add A New Beer</h1>
         <SearchBar onSearch={this.handleSearchBarClick.bind(this)} />
-        {this.state.showInfoPanel ? <InfoPanel beer={this.state.searchedBeer} showDetails={true} showButtons={true} /> : null}
+        {this.state.showInfoPanel ? <InfoPanel beer={this.state.searchedBeer} showDetails={true} showButtons={true} addBeer={this.handleAddBeer.bind(this)} closeBeer={this.handleCloseClick.bind(this)} /> : null}
       </div>
     );
   }

@@ -1,34 +1,23 @@
-//Create function to add beer to list
-//Create function to close InfoPanel
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './css/InfoPanel.css';
 
 class InfoPanel extends Component {
 
-  // handleCloseClick(event){
-  //   event.preventDefault();
-  //   this.props.closeInfoPanel();
-  // }
-  //
-  // handleAddBeer(event) {
-  //   event.preventDefault();
-      // const { name, description, abv, ibu, style, label, user, list } = newBeer;
-      // axios.post('/api/item/', { name, description, abv, ibu, style, label, user, list })
-      //   .then(resp => {
-      //     const beer = resp.data;
-      //     this.setState({
-      //         beers: [beer, ...this.state.movies]
-      //       })
-      //     })
-      //   .catch(err => console.log(err));
-  // }
+  constructor() {
+    super();
+
+    this.state = {
+      showDetails: false,
+      showButtons: false
+    }
+  }
 
   render() {
     return (
       <div className="info-panel">
         <div className='beer-header'>
-          {this.props.beer.label ? <img src={this.props.beer.label.icon} alt='A cool beer poster' /> : <p>No Label</p> }
+          {this.props.beer.label ? <img src={this.props.beer.label} alt='A cool beer poster' /> : <p>No Label</p> }
           <h1>{this.props.beer.name}</h1>
         </div>
         {this.props.showDetails ?
@@ -43,14 +32,12 @@ class InfoPanel extends Component {
         </div>) : null }
         {this.props.showButtons ?
         (<div id="buttons">
-          <Button bsStyle="primary">Add</Button>
-          <Button bsStyle="danger">Cancel</Button>
+          <Button bsStyle="primary" onClick={this.props.addBeer.bind(this)}>Add</Button>
+          <Button bsStyle="danger" onClick={this.props.closeBeer.bind(this)}>Cancel</Button>
         </div>) : null }
       </div>
     );
   }
 }//End InfoPanel
-
-// <button className='btn btn-add' onClick={this.handleAddBeer.bind(this)}>Add beer</button>
 
 export default InfoPanel;

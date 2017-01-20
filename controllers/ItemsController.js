@@ -5,7 +5,6 @@ module.exports = {
   create(req, res, next) {
     const listId = req.body.list;
     const userId = req.user._id;
-
     // Declare a variable to set our created item to
     let newItem;
 
@@ -25,17 +24,14 @@ module.exports = {
         if (!list) {
           return res.status(401).json('Cannot add item to this list');
         }
-
         // Assign our list to our foundList variable
         foundList = list;
-
         // Create a new ItemModel and save it
         return new ItemModel({
           name: req.body.name,
           description: req.body.description,
           abv: req.body.abv,
           ibu: req.body.ibu,
-          brewedBy: req.body.brewedBy,
           style: req.body.style,
           label: req.body.label,
           user: userId,
@@ -46,7 +42,6 @@ module.exports = {
       .then(item => {
         // Assign our item to our newItem variable
         newItem = item;
-
         // Update the list array of items with the new id
         foundList.items.push(newItem._id);
 
