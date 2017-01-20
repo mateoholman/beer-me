@@ -1,11 +1,12 @@
-// Add message if there are no beers currently in the list.
+// Create the Beer component to show each beer in the list
 // Finish basic CRUD operations on your lists.
-// Setup an item component similar to the list component in BeerLists
 
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
+
+import InfoPanel from './InfoPanel';
 import './css/ShowBeerList.css';
 import beerMug from './images/beerMug.jpg';
 
@@ -45,6 +46,23 @@ class ShowBeerList extends Component {
       .catch(err => console.log(err));
   }
 
+  showBeers() {
+    if (this.state.items.length > 0) {
+      this.state.items.map(beer => {
+      return(
+        <InfoPanel
+          key={beer._id}
+          beer={beer}
+          showDetails={false}
+          showButtons={false}
+        />
+      );})
+    }
+    else {
+      return (<h2>No beers to list</h2>);
+    }
+  }
+
   render() {
     return (
       <div id="show-beer-list">
@@ -57,6 +75,9 @@ class ShowBeerList extends Component {
         <Button bsStyle="primary" block onClick={this.handleNewClick.bind(this)}>+ New Beer</Button>
         <Button bsStyle="info" block onClick={this.handleEditClick.bind(this)}>Edit List</Button>
         <Button bsStyle="danger" block onClick={this.handleDelClick.bind(this)}>Delete List</Button>
+        <div id="beers">
+          {this.showBeers()}
+        </div>
       </div>
     );
   }
