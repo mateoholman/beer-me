@@ -44,7 +44,7 @@ class NewListItem extends Component {
               abv: abv,
               ibu: ibu,
               style: style.name,
-              label: labels,
+              label: labels.icon,
             },
             showInfoPanel: true,
         });}

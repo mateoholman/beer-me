@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import './css/InfoPanel.css';
 
 class InfoPanel extends Component {
 
