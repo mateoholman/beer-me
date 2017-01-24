@@ -12,14 +12,31 @@ class InfoPanel extends Component {
     }
   }
 
+  detailSwitch(event) {
+    event.preventDefault();
+    if (this.state.showDetails) {
+      this.setState({showDetails: false});
+    }
+    else {
+      this.setState({showDetails: true});
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      showDetails: this.props.showDetails,
+      showButtons: this.props.showButtons
+    });
+  }
+
   render() {
     return (
       <div className="info-panel">
-        <div className='beer-header'>
+        <div className='beer-header' onClick={this.detailSwitch.bind(this)}>
           {this.props.beer.label ? <img src={this.props.beer.label} alt='A cool beer poster' /> : <p>No Label</p> }
           <h1>{this.props.beer.name}</h1>
         </div>
-        {this.props.showDetails ?
+        {this.state.showDetails ?
         (<div className='beer-info'>
           <div id="abv-ibu-style">
             <h4>ABV: {this.props.beer.abv}   |   IBU: {this.props.beer.ibu}</h4>
@@ -29,7 +46,7 @@ class InfoPanel extends Component {
             <p>{this.props.beer.description}</p>
           </div>
         </div>) : null }
-        {this.props.showButtons ?
+        {this.state.showButtons ?
         (<div id="buttons">
           <Button bsStyle="primary" onClick={this.props.addBeer.bind(this)}>Add</Button>
           <Button bsStyle="danger" onClick={this.props.closeBeer.bind(this)}>Cancel</Button>

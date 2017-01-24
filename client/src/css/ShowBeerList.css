@@ -36,8 +36,13 @@
 
 #beers .beer-header {
   width: 100%;
+  border-radius: .5em;
   text-align: center;
   padding: .1em 0;
+}
+
+#beers .beer-header:hover {
+  background-color: #5c5c00;
 }
 
 .beer-header img {

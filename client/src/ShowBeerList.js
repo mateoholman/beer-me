@@ -1,4 +1,3 @@
-// Create the Beer component to show each beer in the list
 // Finish basic CRUD operations on your lists.
 
 import React, { Component } from 'react';
