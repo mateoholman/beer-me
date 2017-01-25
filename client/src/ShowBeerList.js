@@ -36,15 +36,16 @@ class ShowBeerList extends Component {
   }
 
   handleDelClick(event) {
-    event.preventDefault();
-    axios.delete(`/api/lists/${this.state.id}`, {
-      headers: {
-        authorization: localStorage.getItem('token')
-      }})
-      .then(resp => {
-        browserHistory.push('/beerLists');
-      })
-      .catch(err => console.log(err));
+    if (confirm('Really? Delete this whole list?')){
+      axios.delete(`/api/lists/${this.state.id}`, {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }})
+        .then(resp => {
+          browserHistory.push('/beerLists');
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   showBeers() {
@@ -55,8 +56,8 @@ class ShowBeerList extends Component {
     return (
       <div id="show-beer-list">
         <div className="list-buttons">
-          <i className="fa fa-times fa-2x" aria-hidden="true"></i>
-          <i className="fa fa-pencil fa-2x" aria-hidden="true"></i>
+          <i className="fa fa-times fa-2x" aria-hidden="true" onClick={this.handleDelClick.bind(this)}></i>
+          <i className="fa fa-pencil fa-2x" aria-hidden="true" onClick={this.handleEditClick.bind(this)} ></i>
         </div>
         <div className="title-avatar">
           <img src={this.state.avatar} alt="A frosty mug of beer" />
@@ -65,9 +66,7 @@ class ShowBeerList extends Component {
           <h1>{this.state.title}</h1>
         </div>
         <div className="button-container">
-          <Button bsStyle="primary" onClick={this.handleNewClick.bind(this)}>New Beer</Button>
-          <Button bsStyle="info" onClick={this.handleEditClick.bind(this)}>Edit List</Button>
-          <Button bsStyle="danger" onClick={this.handleDelClick.bind(this)}>Delete List</Button>
+          <Button block bsStyle="primary" onClick={this.handleNewClick.bind(this)}>Add New Beer</Button>
         </div>
         <div id="beers">
           {
@@ -82,7 +81,7 @@ class ShowBeerList extends Component {
                 />
               );})
             :
-            (<h2>No beers to list</h2>)
+            (<h2>You have no beers in your list! Click the button above to add a new one.</h2>)
           }
         </div>
       </div>

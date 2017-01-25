@@ -5,11 +5,12 @@
 }
 
 #show-beer-list .button-container {
+  margin: .5em 0;
   text-align: center;
 }
 
 #show-beer-list .button-container button {
-  margin: 0 .15em;
+  margin: .25em .15em;
 }
 
 .title-avatar img {
@@ -26,13 +27,31 @@
   display: inline-block;
 }
 
-#show-beer-list .list-buttons .fa {
-  float: left;
-  color: red;
+#show-beer-list .list-buttons {
+  float: right;
+  margin-left: .25em;
 }
 
-#beers {
+#show-beer-list .list-buttons .fa {
+  display: block;
+}
 
+#show-beer-list .list-buttons .fa-times{
+  color: #990000;
+}
+
+#show-beer-list .list-buttons .fa-times:hover{
+  cursor: pointer;
+  color: #cc0000;
+}
+
+#show-beer-list .list-buttons .fa-pencil{
+  color: #004c00;
+}
+
+#show-beer-list .list-buttons .fa-pencil:hover{
+  cursor: pointer;
+  color: #008000;
 }
 
 #beers .info-panel {
@@ -52,6 +71,11 @@
 
 #beers .beer-header:hover {
   background-color: #5c5c00;
+}
+
+#beers h2 {
+  text-align: left;
+  color: gray;
 }
 
 .beer-header img {
