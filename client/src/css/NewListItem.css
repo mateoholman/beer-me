@@ -13,6 +13,7 @@ form {
 }
 
 .info-panel {
+  max-width: 75%;
   border: 1px solid black;
   border-radius: .5em;
   background-color: #b8b800;

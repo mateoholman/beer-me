@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
+import './css/SearchBar.css';
 
 class SearchBar extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class SearchBar extends Component {
 
   render() {
   return (
-      <Form onSubmit={this.handleSubmit.bind(this)}>
+      <Form inline onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup>
           <FormControl
             type='text'

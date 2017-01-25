@@ -33,7 +33,7 @@ class InfoPanel extends Component {
     return (
       <div className="info-panel">
         <div className='beer-header' onClick={this.detailSwitch.bind(this)}>
-          {this.props.beer.label ? <img src={this.props.beer.label} alt='A cool beer poster' /> : <p>No Label</p> }
+          {this.props.beer.label ? <img src={this.props.beer.label} alt='Beer' /> : <p>No Label</p> }
           <h1>{this.props.beer.name}</h1>
         </div>
         {this.state.showDetails ?

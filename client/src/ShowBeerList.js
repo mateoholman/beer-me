@@ -1,4 +1,4 @@
-// Finish layout/styling of FA icons
+// Create a new Component for the list instead of InfoPanel
 // Finish basic CRUD operations on your lists.
 
 import React, { Component } from 'react';
@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 
-import InfoPanel from './InfoPanel';
+import BeerListItem from './BeerListItem';
 import './css/ShowBeerList.css';
 import beerMug from './images/beerMug.jpg';
 
@@ -73,11 +73,10 @@ class ShowBeerList extends Component {
             (this.state.items.length > 0) ?
               this.state.items.map(beer => {
               return(
-                <InfoPanel
+                <BeerListItem
                   key={beer._id}
                   beer={beer}
                   showDetails={false}
-                  showButtons={false}
                 />
               );})
             :

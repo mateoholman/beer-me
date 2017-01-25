@@ -54,13 +54,13 @@ class NewListItem extends Component {
 
   handleAddBeer(event) {
     event.preventDefault();
-      const { name, description, abv, ibu, style } = this.state.searchedBeer;
-      const label = this.state.searchedBeer.label.icon;
+      const { name, description, abv, ibu, style, label } = this.state.searchedBeer;
       const list = this.state.listId;
       axios.post('/api/items', { list, name, description, abv, ibu, style, label }, {
         headers: {
           authorization: localStorage.getItem('token')
-        }});
+        }})
+        .then(browserHistory.goBack)
   }
 
   handleCloseClick(event){
