@@ -4,8 +4,12 @@
   margin: auto;
 }
 
-#show-beer-list button {
+#show-beer-list .button-container {
+  text-align: center;
+}
 
+#show-beer-list .button-container button {
+  margin: 0 .15em;
 }
 
 .title-avatar img {
@@ -20,6 +24,11 @@
 
 .title-listName {
   display: inline-block;
+}
+
+#show-beer-list .list-buttons .fa {
+  float: left;
+  color: red;
 }
 
 #beers {

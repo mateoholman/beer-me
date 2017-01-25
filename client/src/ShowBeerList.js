@@ -1,3 +1,4 @@
+// Finish layout/styling of FA icons
 // Finish basic CRUD operations on your lists.
 
 import React, { Component } from 'react';
@@ -53,15 +54,21 @@ class ShowBeerList extends Component {
   render() {
     return (
       <div id="show-beer-list">
+        <div className="list-buttons">
+          <i className="fa fa-times fa-2x" aria-hidden="true"></i>
+          <i className="fa fa-pencil fa-2x" aria-hidden="true"></i>
+        </div>
         <div className="title-avatar">
           <img src={this.state.avatar} alt="A frosty mug of beer" />
         </div>
         <div className="title-listName">
           <h1>{this.state.title}</h1>
         </div>
-        <Button bsStyle="primary" block onClick={this.handleNewClick.bind(this)}>+ New Beer</Button>
-        <Button bsStyle="info" block onClick={this.handleEditClick.bind(this)}>Edit List</Button>
-        <Button bsStyle="danger" block onClick={this.handleDelClick.bind(this)}>Delete List</Button>
+        <div className="button-container">
+          <Button bsStyle="primary" onClick={this.handleNewClick.bind(this)}>New Beer</Button>
+          <Button bsStyle="info" onClick={this.handleEditClick.bind(this)}>Edit List</Button>
+          <Button bsStyle="danger" onClick={this.handleDelClick.bind(this)}>Delete List</Button>
+        </div>
         <div id="beers">
           {
             (this.state.items.length > 0) ?
