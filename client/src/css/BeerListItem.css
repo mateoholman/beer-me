@@ -1,8 +1,9 @@
 .beer-container {
+  height: auto;
   margin: .25em;
   border-radius: .5em;
   background-color: #b8b800;
-  padding: .5em .5em;
+  padding: .5em;
 }
 
 .beer-container:hover {
@@ -10,13 +11,42 @@
   background-color: #c8c800;
 }
 
-.beer-label {
-  width: 25%;
+/***********************************/
+
+.beer-header {
+  height: 50px;
+  width: 100%;
+  border-radius: .5em;
+  text-align: center;
+  padding: .1em 0;
 }
 
-.beer-container img {
-  width: 75%;
+.beer-header img {
+  width: 45px;
   border: .15em solid black;
   border-radius: 50%;
   float: left;
+}
+
+.beer-header h2 {
+  margin: auto;
+  color: white;
+}
+
+.beer-header .action-buttons {
+  float: right;
+}
+
+.beer-header .action-buttons .fa {
+  display: block;
+}
+
+#abv-ibu-style {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+#description p {
+  padding: 0 .25em;
+  color: black;
 }
