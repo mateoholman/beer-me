@@ -39,6 +39,23 @@
 
 .beer-header .action-buttons .fa {
   display: block;
+  margin: .5em .25em;
+}
+
+.beer-header .action-buttons .fa-info {
+  color: #566c73;
+}
+
+.beer-header .action-buttons .fa-info:hover {
+  color: #add8e6;
+}
+
+.beer-header .action-buttons .fa-times {
+  color: #990000;
+}
+
+.beer-header .action-buttons .fa-times:hover {
+  color: #cc0000;
 }
 
 #abv-ibu-style {

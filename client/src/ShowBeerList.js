@@ -48,9 +48,26 @@ class ShowBeerList extends Component {
     }
   }
 
-  showBeers() {
+handleDelBeerClick(beerId) {
+  //Get the current beer list
+  const beers = this.state.items;
+  //Find the index of the beer that we want to delete
+  const index = beers.map((beer) => beer._id).indexOf(beerId);
+  //Create a new contacts array without the contact we want to delete
+  const newBeers = beers.slice(0, index).concat(beers.slice(index+1));
 
+  if (confirm('Are you sure you want to delete this beer?')){
+    axios.delete(`/api/items/${beerId}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }})
+      .then(prev => this.setState({
+        ...prev,
+        items: newBeers
+      }))
+      .catch(err => console.log(err));
   }
+}
 
   render() {
     return (
@@ -76,6 +93,7 @@ class ShowBeerList extends Component {
                 <BeerListItem
                   key={beer._id}
                   beer={beer}
+                  delBeer={this.handleDelBeerClick.bind(this)}
                   showDetails={false}
                 />
               );})
