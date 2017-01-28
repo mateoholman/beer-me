@@ -13,6 +13,10 @@
   font-size: 75px;
 }
 
+.video-overlay a {
+  color: #add8e6;
+}
+
 .home video {
   position: fixed;
   top: 50%;

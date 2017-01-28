@@ -71,7 +71,7 @@ class BeerListForm extends Component {
         <FormControl
           type='text'
           name='list-title'
-          placeholder='List Title...'
+          placeholder='List Title'
           value={this.state.title}
           onChange={this.handleTitleChange.bind(this)}
         />
@@ -81,7 +81,7 @@ class BeerListForm extends Component {
         <FormControl
           type='text'
           name='list-avatar'
-          placeholder='Avatar URL...'
+          placeholder='Avatar URL (not required)'
           value={this.state.avatar}
           onChange={(event) => this.handleAvatarChange(event)}
         />

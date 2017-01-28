@@ -23,10 +23,10 @@ class BeerLists extends Component {
     const bLists = this.state.beerLists;
     return (
       <div id="beer-lists-container">
-        <h1>Badass Beer Lists</h1>
+        <h1>Your Beer Lists</h1>
         <Button bsStyle="primary" bsSize="small" onClick={this.handleClick.bind(this)}>New List</Button>
         <div className='beer-lists'>
-          {
+          { (this.state.beerLists.length > 0) ?
             bLists.map(list => {
             return(
               <BeerList
@@ -35,9 +35,11 @@ class BeerLists extends Component {
                 title={list.title}
                 avatar={list.avatar}
               />
-            )
+            );})
+            :
+            (<h2>You do not have any lists! Click the button above to create
+              your first list.</h2>)
           }
-        )}
         </div>
       </div>
     );
