@@ -1,4 +1,4 @@
-// dotenv allows us to declare environment variables in a .env file, \
+// dotenv allows us to declare environment variables in a .env file,
 // find out more here https://github.com/motdotla/dotenv
 require('dotenv').config();
 
@@ -51,7 +51,8 @@ app.get('/api/secret', authStrategy, function(req, res, next) {
   res.send(`The current user is ${req.user.username}`);
 });
 
-//Create our own middleware to access the Brewery DB API
+//Create our own middleware to access the Brewery DB API, because it does not
+//allow CORS!
 //We specify the search term for the Brewery DB AP through a query.
 app.get('/api/addNewBeer', function(req, res, next) {
   const pathName = "http://api.brewerydb.com/v2/beers?name=" + req.query.name + "&key=" + process.env.BDBAPI;

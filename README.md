@@ -30,3 +30,8 @@ react-router and creating a full-stack JavaScript web application.
 22.	Hook the NewListItem component into the ShowBeerLists component.
 23.	Add code so a User can add a searched beer to their list or discard a searched beer.
 24.	Worked on styling and layout of the list and CRUD operations.
+
+## To Do
+
+1. Update documentation.
+2. Refactor, refactor & refactor some more!
