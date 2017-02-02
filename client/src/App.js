@@ -1,4 +1,3 @@
-// Route component with onEnter based on user authentication status!
 // Catch & post handleSignIn error messages
 // Add alert messages for SignUp & SignIn
 
