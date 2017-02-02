@@ -1,5 +1,8 @@
 // dotenv allows us to declare environment variables in a .env file,
 // find out more here https://github.com/motdotla/dotenv
+// Make sure you set your environment variables when deploying. On Heroku,
+// use heroku config:add and then your environment variables ex:
+// heroku config:add SECRET="qwerty"
 require('dotenv').config();
 
 const compression = require('compression');
