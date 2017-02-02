@@ -1,8 +1,4 @@
-//Fix the handleDelClick so it refreshed the page after a beer is deleted!
-
 import React, { Component } from 'react';
-import axios from 'axios';
-import { browserHistory } from 'react-router';
 import './css/BeerListItem.css';
 
 class BeerListItem extends Component {
