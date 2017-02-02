@@ -27,7 +27,7 @@ class App extends Component {
 
     this.state = {
       alertMessage: '',
-      authenticated: localStorage.getItem('token'),
+      authenticated: localStorage.getItem('token') || null,
     };
   }
 
