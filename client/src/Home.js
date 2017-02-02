@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './css/Home.css';
-// import beerPoster from './images/beerPoster.jpg';
 import beerLogo from './images/hop2.png';
 import beerBackground from './videos/beerBackground.mp4';
 
