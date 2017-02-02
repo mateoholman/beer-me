@@ -18,7 +18,7 @@ const chalk = require('chalk');
 require('./services/passport');
 
 // Setup the database
-const databaseUrl = process.env.MONGODB_URI || 'mongodb://localhost/beer-me';
+const databaseUrl = process.env.MONGODB_URI;
 mongoose.Promise = global.Promise;
 mongoose.connect(databaseUrl)
   .then(() => console.log(chalk.cyan(`[mongoose] Connected to MongoDB`)))
@@ -27,7 +27,7 @@ mongoose.connect(databaseUrl)
 const app = express();
 
 const env = process.env.NODE_ENV || 'development';
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 app.set('port', port);
 

@@ -30,7 +30,7 @@
     "react-dom": "^15.4.1"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
     "server": "babel-node server.js",
     "client": "babel-node start-client.js"
   },
