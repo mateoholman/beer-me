@@ -1,3 +1,6 @@
+//Had to remove the build from the .gitignore, run npm run build and push the
+//production build to heroku in order to host the app!
+
 // dotenv allows us to declare environment variables in a .env file,
 // find out more here https://github.com/motdotla/dotenv
 // Make sure you set your environment variables when deploying. On Heroku,
