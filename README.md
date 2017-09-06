@@ -17,5 +17,4 @@ react-router and creating a full-stack JavaScript web application.
 * Styling with Bootstrap.
 
 ## To Do
-
 * Refactor, refactor & refactor some more!
